@@ -28,14 +28,17 @@
         min-width: 100vw;
     }
     div.navparent > nav {
-        min-width: 90vw;
+        /* min-width: 90vw; */
         position:fixed;
         display: flex;
         justify-content: space-between;
         background-color: lightblue;
         padding: 10px 10px;
         border-radius: 10px;
-        margin: -5px 5px 10px 0px;
+        /* margin: -5px 5px 10px 0px; */
+        top:0px;
+        left:1%;
+        width:97%;
         border-color: lavenderblush;
         border-width: 0.1px;
         border-style: solid;
