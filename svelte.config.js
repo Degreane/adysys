@@ -19,7 +19,8 @@ export default {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$db:'src/db'
+			$db:'src/db',
+			$components:'src/components'
 		}
 	}
 };
