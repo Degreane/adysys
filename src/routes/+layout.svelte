@@ -26,10 +26,12 @@
     .navparent {
         position:relative;
         min-width: 100vw;
+        top:0px;
+        height:2rem;
     }
     div.navparent > nav {
         /* min-width: 90vw; */
-        position:fixed;
+        position:absolute;
         display: flex;
         justify-content: space-between;
         background-color: lightblue;

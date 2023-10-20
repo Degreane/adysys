@@ -10,5 +10,13 @@ module.exports = {
 		browser: true,
 		es2017: true,
 		node: true
-	}
+	},
+	overrides: [
+		{
+		  "files": ["*.js", "*.jsx"],
+		  "rules": {
+			  "@typescript-eslint/...": "off"
+		  }
+		}
+	  ],
 };

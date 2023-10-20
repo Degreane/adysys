@@ -1,19 +1,35 @@
 <script>
     let loggedIn
+    export let form;
+    let username_Valid = false
+    let password_Valid = false
+    $: form_Valid = username_Valid && password_Valid
 </script>
 
+
 <div class="container">
-    <form method="post" action="?/login">
+    
+    <form method="post" action="?/login" class="{form_Valid?'valid':'invalid'}">
         <label>
-            <span>UserName: </span><input type="text" autocomplete="off" id="uname" name="uname"/>
+            <span>UserName: </span><input class="{username_Valid?'valid':'invalid'}" required type="text" value={form?.uname || ''} autocomplete="off" id="uname" name="uname" on:input={(e)=>{if (e.target.value.trim().length > 5){
+                username_Valid=true
+            }else{
+                username_Valid=false
+            }}}/>
         </label>
         <br>
         <label>
-            <span>PassWord: </span><input type="password" autocomplete="off" id="upass" name="upass"/>
+            <span>PassWord: </span><input class="{password_Valid?'valid':'invalid'}" required type="password" autocomplete="off" id="upass" name="upass" on:input={(e)=>{if (e.target.value.trim().length > 5){
+                password_Valid=true
+            }else{
+                password_Valid=false
+            }}}/>
         </label>
         <hr>
         <input type="submit" value="Submit"/>
-    
+        {#if form?.err} 
+            <span>{form.message}</span>
+        {/if}
     </form>
     
 </div>
@@ -26,6 +42,14 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0px 0px 20px 28px inset lightsteelblue;
+    }
+    form.invalid,input.invalid{
+        border-color: red;
+        border-width:0.5px;
+        border-style: solid;
+    }
+    form.valid,input.valid{
+        border-color:lightblue;
     }
     .container {
         display: flex;
