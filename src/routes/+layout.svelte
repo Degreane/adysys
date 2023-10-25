@@ -4,10 +4,10 @@
 </script>
 
 <header>
-  <nav class="navbar space-between"   aria-label="site navigation"> 
+  <nav class="navbar space-between shadow"   aria-label="site navigation"> 
       <div class="navbar-brand ">
           <!-- svelte-ignore a11y-invalid-attribute -->
-          <a class="navbar-item" href="#">
+          <a class="navbar-item" href="/">
             <img src={image}  height="64" alt={image}>
           </a>
       </div>
@@ -53,6 +53,9 @@
   li.navbar-element {
     list-style-type: none;
     padding:0px 5px;
+  }
+  .shadow {
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3), 0px 0px 2px 1px rgba(255,255,255,1) inset;
   }
 
 </style>
