@@ -50,19 +50,30 @@ export const actions ={
                 cookies.set('Authorized',true,{httpOnly:true,maxAge:300,sameSite:'strict'})
             }else{
                 // console.log(`Awaited Validation3 ${eq}`)
-                theUser.err = true
-                theUser.message="Error UserName/Password Incorrect"
+                theUser={
+                    err:true,
+                    message:"Error UserName/Password Incorrect",
+                    uname:userName,
+                }
+                
             }
             
         }else{
-            theUser.err=true
-            theUser.message="Error UserName/PassWord Incorrect"
+            theUser={
+                err:true,
+                message:"Error UserName/PassWord Incorrect",
+                uname:userName,
+            }
+            // theUser.err=true
+            // theUser.message="Error UserName/PassWord Incorrect"
         }
-        
-        theUser['_id']=theUser['_id'].toString();
-        const theUser2Send = userStripField(['password'],theUser) 
-        console.log(theUser2Send);
-        
-        return theUser
+        if (!theUser.err){
+            theUser['_id']=theUser['_id'].toString();
+            const theUser2Send = userStripField(['password'],theUser) 
+            console.log(theUser2Send);
+            return theUser2Send;
+        }else{
+            return theUser;
+        }
     }
 }

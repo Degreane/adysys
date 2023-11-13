@@ -62,6 +62,20 @@
         width:50%;
 
     }
+    @media only screen and (max-width : 600px) {
+        .container {
+            width:100%;
+            padding:0px;
+            left:0px;
+            top:0px;
+            margin-top:10%;
+        }
+        form {
+            width:100%;
+            padding:10px;
+        }
+    }
+    
     input {
         width:90%;
         padding: 5px;
