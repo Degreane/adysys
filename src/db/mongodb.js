@@ -5,7 +5,11 @@ const client = new MongoClient( MONGO_URL);
 
 export function connect_to_db() {
     console.log(`Starting MongoDB Connection to ${MONGO_URL}`);
+    //client.connect().then((cl)=>{
+    //    return cl.db("adysys")
+    //});
+    //return client_db.db("adysys")
     return client.connect();
 }
 
-export default client.db();
+export default client.db("adysys");

@@ -13,7 +13,7 @@
     
     <form use:enhance method="post" action="?/login" class="{form_Valid?'valid':'invalid'}">
         <label>
-            <span>UserName: </span><input class="{username_Valid?'valid':'invalid'}" required type="text" value={form?.uname || ''} autocomplete="off" id="uname" name="uname" on:input={(e)=>{if (e.target.value.trim().length > 5){
+            <span>UserName: </span><input class="{username_Valid?'valid':'invalid'}" required type="text" value={form?.uname || ''} autocomplete="off" id="uname" name="uname" on:input={(e)=>{if (e.target?.value?.trim().length > 5){
                 username_Valid=true
             }else{
                 username_Valid=false
@@ -21,7 +21,7 @@
         </label>
         <br>
         <label>
-            <span>PassWord: </span><input class="{password_Valid?'valid':'invalid'}" required type="password" autocomplete="off" id="upass" name="upass" on:input={(e)=>{if (e.target.value.trim().length > 5){
+            <span>PassWord: </span><input class="{password_Valid?'valid':'invalid'}" required type="password" autocomplete="off" id="upass" name="upass" on:input={(e)=>{if (e.target?.value?.trim().length > 5){
                 password_Valid=true
             }else{
                 password_Valid=false
@@ -43,7 +43,7 @@
         background-color: lightblue;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0px 0px 20px 28px inset lightsteelblue;
+        box-shadow: 0px 0px 20px 28px inset lightsteelblue,0px 0px 19px 2px darkblue;
     }
     form.invalid,input.invalid{
         border-color: red;
