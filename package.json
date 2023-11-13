@@ -44,6 +44,7 @@
 		"@svelteuidev/prism": "^0.15.3",
 		"bcrypt": "^5.1.1",
 		"dayjs": "^1.11.10",
+		"jsonwebtoken": "^9.0.2",
 		"moment": "^2.29.4",
 		"mongodb": "^6.1.0",
 		"pnpm": "^8.9.2"

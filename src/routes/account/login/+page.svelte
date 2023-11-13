@@ -1,4 +1,6 @@
 <script>
+	import { enhance } from '$app/forms';
+
     let loggedIn
     export let form;
     let username_Valid = false
@@ -9,7 +11,7 @@
 
 <div class="container">
     
-    <form method="post" action="?/login" class="{form_Valid?'valid':'invalid'}">
+    <form use:enhance method="post" action="?/login" class="{form_Valid?'valid':'invalid'}">
         <label>
             <span>UserName: </span><input class="{username_Valid?'valid':'invalid'}" required type="text" value={form?.uname || ''} autocomplete="off" id="uname" name="uname" on:input={(e)=>{if (e.target.value.trim().length > 5){
                 username_Valid=true
@@ -28,7 +30,7 @@
         <hr>
         <input type="submit" value="Submit"/>
         {#if form?.err} 
-            <span>{form.message}</span>
+            <div>{form.message}</div>
         {/if}
     </form>
     
