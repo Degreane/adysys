@@ -1,14 +1,15 @@
 // @ts-nocheck
 import { usersCount,userFindByUserName,userValidatePassword, userStripField } from '$db/users.js'; // import usersCount, and userFindByUserName from the users DataBase
-
+import {  redirect } from '@sveltejs/kit';
 /**
  * 
  * @param string {cookies} 
  * @returns bool (loggedIn)
  */
 export function load({ cookies }) {
-	let loggedIn=cookies.get('loggedIn');
-    return loggedIn;
+	let loggedIn=cookies.get('Authorized');
+    console.log("Authorized LogIn",loggedIn)
+    return {'Authorized':loggedIn};
 }
 
 export const actions ={
@@ -47,7 +48,8 @@ export const actions ={
                 // console.log(`Awaited Validation2 ${eq}`)
                 theUser.err=false
                 theUser.message=null
-                cookies.set('Authorized',true,{httpOnly:true,maxAge:300,sameSite:'strict'})
+                cookies.set('Authorized',true,{httpOnly:true,maxAge:300,sameSite:'strict',path:'/'})
+                //cookies.set('')                
             }else{
                 // console.log(`Awaited Validation3 ${eq}`)
                 theUser={
@@ -71,7 +73,8 @@ export const actions ={
             theUser['_id']=theUser['_id'].toString();
             const theUser2Send = userStripField(['password'],theUser) 
             console.log(theUser2Send);
-            return theUser2Send;
+            throw redirect(303,'/');
+            // return theUser2Send;
         }else{
             return theUser;
         }
